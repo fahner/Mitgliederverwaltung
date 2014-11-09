@@ -173,7 +173,7 @@ function checkPLZ($plz) {
     
   if($ergebnis->rowCount()==0) {
     echo "Die angegebene Postleitzahl ".$plz." ist noch nicht in der Datenbank enthalten. Bitte zugeh&ouml;rige Stadt eingeben:";
-    echo "<form action='mitglied_eintragen.php' method='post'>";
+    echo "<form action='?site=mitglied_eintragen' method='post'>";
     echo "Ort: ";
     echo "<input type=\"text\" name=\"ort\" size=\"30\"> <br /><br />";
     echo "<input type='hidden' name='plz' value ='$plz'/>";
@@ -193,7 +193,6 @@ function insertPLZ($plz, $ort) {
   $ergebnis = $db->prepare($sql);
   $ergebnis->execute(array($plz, $ort));
   echo "Stadt erfolgreich ins Postleitzahlregister eingetragen. <br />";  
-  echo "Zur&uuml;ck zur <a href='mitglieder.php'>Mitgliederverwaltung</a>"; 
 }
 
 function printFunktionen() {
