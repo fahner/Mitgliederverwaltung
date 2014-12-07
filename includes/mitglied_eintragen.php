@@ -107,7 +107,7 @@ function getMitgliedFromPOST($index=false) {
   $mitglied["plz"] = $_POST["plz"];
   $mitglied["telefon"] = $_POST["telefon"];
   $mitglied["handy"] = $_POST["handy"];
-  $mitglied["email"] = mysql_real_escape_string($_POST["email"]);
+  $mitglied["email"] = $_POST["email"];
   return $mitglied;
 }
 
@@ -189,7 +189,7 @@ function checkPLZ($plz) {
 
 function insertPLZ($plz, $ort) {
   $db = classDB::connect();
-  $sql = "INSERT INTO staedte VALUES ('?', '?')";
+  $sql = "INSERT INTO staedte VALUES (?, ?)";
   $ergebnis = $db->prepare($sql);
   $ergebnis->execute(array($plz, $ort));
   echo "Stadt erfolgreich ins Postleitzahlregister eingetragen. <br />";  
